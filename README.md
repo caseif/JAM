@@ -1,5 +1,16 @@
 # SRGX 1.0 Format Specification
 
+## Table of Contents
+- [Preface] [secPreface]
+- [Introduction] [secIntro]
+- [General Format] [secGenFormat]
+- [External Specifications Referenced] [secExtSpecsRefed]
+- [Entry Types] [secEntryTypes]
+  - [Class] [secEntryClass]
+  - [Field] [secField]
+  - [Method] [secMethod]
+  - [Method Parameter] [secMethodParam]
+
 ## Preface
 This specification is still a work in progress and not yet finalized. Therefore, it should be considered subject to
 breaking changes without prior notice.
@@ -29,9 +40,12 @@ The second element (immediately after the key) contains the qualified original (
 
 The third element contains the qualified deobfuscated name of the class.
 
+Qualified class names must follow a modified version of the binary name specification ([JLS §13.1] [JLS 13.1]). This
+modification replaces all dots (".") with slashes ("/"). (For instance, `com.example.SomeClass` becomes
+`com/example/SomeClass`.)
+
 #### Example
-```
-CL com/example/a com/example/SomeClass
+```CL com/example/a com/example/SomeClass
 ```
 
 This example targets the class originally named `com/example/a`, renaming it to `com/example/SomeClass`.
@@ -49,8 +63,7 @@ The fourth element contains the original (obfuscated) descriptor of the field.
 The fifth element contains the unqualified deobfuscated name of the field.
 
 #### Example
-```
-FD com/example/a b Ljava/lang/String; idString
+```FD com/example/a b Ljava/lang/String; idString
 ```
 
 This example targets field `b` with descriptor `Ljava/lang/String;` in class `com/example/a`, renaming it to `idString`.
@@ -67,8 +80,7 @@ The fourth element contains the original (obfuscated) descriptor of the method.
 The fifth element contains the unqualified deobfuscated name of the method.
 
 #### Example
-```
-MD com/example/a b ()Ljava/lang/String; getName
+```MD com/example/a b ()Ljava/lang/String; getName
 ```
 
 This example targets method `b` with descriptor `()Ljava/lang/String;` in class `com/example/a`, renaming it to
@@ -90,8 +102,7 @@ The fifth element contains the original (obfuscated) descriptor of the parameter
 The sixth element contains the new name of the parameter.
 
 #### Example
-```
-MP com/example/a b 0 Ljava/lang/String; idString
+```MP com/example/a b 0 Ljava/lang/String; idString
 ```
 This example targets the first parameter (index `0`) of method `b` in class `com/example/a` with (parameter) descriptor
 `Ljava/lang/String;`, renaming it to `idString`.
@@ -124,3 +135,13 @@ each.
 [JVMS]: https://docs.oracle.com/javase/specs/jvms/se8/html/index.html
 [JVMS 4.2.1]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.2.1
 [JVMS 4.3]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.3
+
+[secPreface]: #preface
+[secIntro]: #introduction
+[secGenFormat]: #general-format
+[secExtSpecsRefed]: #external-specifications-referenced
+[secEntryTypes]: #entry-types
+[secEntryClass]: #class
+[secField]: #field
+[secMethod]: #method
+[secMethodParam]: #method-parameter
