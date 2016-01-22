@@ -17,8 +17,8 @@ This specification is still a work in progress and not yet finalized. Therefore,
 breaking changes without prior notice.
 
 ## Introduction
-SRGX is a format for compact and straightforward storage of deobfuscation mappings for Java programmings. It is based
-off the popular SRG format, extending it to resolve multiple shortcomings.
+SRGX is a format for compact and straightforward storage of deobfuscation mappings for Java programs. It is based off of
+the popular SRG format, extending it to resolve multiple shortcomings.
 
 It should be noted that it is not designed to be backward-compatible with the original SRG specification.
 
