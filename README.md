@@ -29,10 +29,6 @@ The second element (immediately after the key) contains the qualified original (
 
 The third element contains the qualified deobfuscated name of the class.
 
-Qualified class names must follow a modified version of the binary name specification ([JLS §13.1] [JLS 13.1]). This
-modification replaces all dots (".") with slashes ("/"). (For instance, `com.example.SomeClass` becomes
-`com/example/SomeClass`.)
-
 #### Example
 ```
 CL com/example/a com/example/SomeClass
