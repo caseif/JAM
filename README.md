@@ -7,9 +7,10 @@
 - [External Specifications Referenced] [secExtSpecsRefed]
 - [Entry Types] [secEntryTypes]
   - [Class] [secEntryClass]
-  - [Field] [secField]
-  - [Method] [secMethod]
-  - [Method Parameter] [secMethodParam]
+  - [Field] [secEntryField]
+  - [Method] [secEntryMethod]
+  - [Method Parameter] [secEntryMethodParam]
+- [Differences from SRG] [secSrgDiffs]
 
 ## Preface
 This specification is still a work in progress and not yet finalized. Therefore, it should be considered subject to
@@ -45,7 +46,8 @@ modification replaces all dots (".") with slashes ("/"). (For instance, `com.exa
 `com/example/SomeClass`.)
 
 #### Example
-```CL com/example/a com/example/SomeClass
+```
+CL com/example/a com/example/SomeClass
 ```
 
 This example targets the class originally named `com/example/a`, renaming it to `com/example/SomeClass`.
@@ -63,7 +65,8 @@ The fourth element contains the original (obfuscated) descriptor of the field.
 The fifth element contains the unqualified deobfuscated name of the field.
 
 #### Example
-```FD com/example/a b Ljava/lang/String; idString
+```
+FD com/example/a b Ljava/lang/String; idString
 ```
 
 This example targets field `b` with descriptor `Ljava/lang/String;` in class `com/example/a`, renaming it to `idString`.
@@ -80,7 +83,8 @@ The fourth element contains the original (obfuscated) descriptor of the method.
 The fifth element contains the unqualified deobfuscated name of the method.
 
 #### Example
-```MD com/example/a b ()Ljava/lang/String; getName
+```
+MD com/example/a b ()Ljava/lang/String; getName
 ```
 
 This example targets method `b` with descriptor `()Ljava/lang/String;` in class `com/example/a`, renaming it to
@@ -102,8 +106,10 @@ The fifth element contains the original (obfuscated) descriptor of the parameter
 The sixth element contains the new name of the parameter.
 
 #### Example
-```MP com/example/a b 0 Ljava/lang/String; idString
 ```
+MP com/example/a b 0 Ljava/lang/String; idString
+```
+
 This example targets the first parameter (index `0`) of method `b` in class `com/example/a` with (parameter) descriptor
 `Ljava/lang/String;`, renaming it to `idString`.
 
@@ -142,6 +148,7 @@ each.
 [secExtSpecsRefed]: #external-specifications-referenced
 [secEntryTypes]: #entry-types
 [secEntryClass]: #class
-[secField]: #field
-[secMethod]: #method
-[secMethodParam]: #method-parameter
+[secEntryField]: #field
+[secEntryMethod]: #method
+[secEntryMethodParam]: #method-parameter
+[secSrgDiffs]: #differences-from-srg
