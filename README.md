@@ -1,4 +1,4 @@
-# SRGX 1.0 Format Specification
+# JAM 1.0 Format Specification
 
 ## Table of Contents
 - [Preface] [secPreface]
@@ -17,18 +17,18 @@ This specification is still a work in progress and not yet finalized. Therefore,
 breaking changes without prior notice.
 
 ## Introduction
-SRGX is a format for compact and straightforward storage of deobfuscation mappings for Java programs. It is based off of
-the popular SRG format, extending it to resolve multiple shortcomings.
+**JAM** (**J**ava **A**ssociated **M**appings) is a format for compact and straightforward storage of deobfuscation
+mappings for Java programs. It is inspired by the popular SRG format, building upon it to resolve multiple shortcomings.
 
 It should be noted that it is not designed to be backward-compatible with the original SRG specification.
 
 ## General Format
-SRGX follows a basic general format. Each line contains a single entry, and each entry occupies a single line. Each
+JAM follows a basic general format. Each line contains a single entry, and each entry occupies a single line. Each
 entry is separated into multiple elements, delimited by a single space character. The first element is a two letter
 key representing type. Remaining elements will vary in purpose depending on the entry type.
 
 ## External Specifications Referenced
-The SRGX format relies upon multiple external specifications within its own.
+The JAM format relies upon multiple external specifications within its own.
 
 Qualified class and interface names must follow the JVMS binary name specification ([JVMS §4.2.1] [JVMS 4.2.1]).
 
