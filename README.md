@@ -123,13 +123,8 @@ MP com/example/a b Ljava/lang/String; 0 idString
 ```
 
 ## Formatting Requirements
-For the sake of sane parsing, JAM mapping guidelines must follow a couple of basic formatting guidelines:
-
-- Class mappings must reside at the top of the file, before all other mapping types
-- Method parameter mappings must not precede their respective method mappings
-
-Implementations must respect these requirements when writing JAM files in order to remain compliant with the
-specification.
+For the sake of sane parsing, JAM mapping files must define all class mappings at the top of the file, before any other
+mapping types. This must be respected by implementations outputting JAM files in order to adhere to the specification.
 
 ## Differences from SRG
 This format contains many differences from its parent. Below is a list of all notable changes as well as rationale for
