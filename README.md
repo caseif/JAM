@@ -1,4 +1,4 @@
-# JAM 1.0 Format Specification
+# JAM 2.0 Format Specification
 
 ## Table of Contents
 - [Preface] [secPreface]
@@ -50,8 +50,7 @@ CL com/example/a com/example/SomeClass
 This example targets the class originally named `com/example/a`, renaming it to `com/example/SomeClass`.
 
 ### Field
-A field entry defines a mapping for a given field identified by a name and descriptor, and is denoted by the
-key `FD`.
+A field entry defines a mapping for a given field identified by a name and descriptor, and is denoted by the key `FD`.
 
 The second element contains the qualified original (obfuscated) name of the class containing the field.
 
@@ -95,20 +94,22 @@ The second element contains the qualified original (obfuscated) name of the clas
 The third element contains the unqualified original (obfuscated) name of the target method (i.e. the one containing the
 parameter of interest).
 
-The fourth element contains the zero-indexed ordinal of the parameter of interest (`0` targets the first parameter, `1`
+The fourth element contains the original (obfuscated) descriptor of the target method.
+
+The fifth element contains the zero-indexed ordinal of the parameter of interest (`0` targets the first  parameter, `1`
 targets the second, etc.).
 
-The fifth element contains the original (obfuscated) descriptor of the parameter's type.
+The sixth element contains the original (obfuscated) descriptor of the parameter's type.
 
-The sixth element contains the new name of the parameter.
+The seventh element contains the new name of the parameter.
 
 #### Example
 ```
-MP com/example/a b 0 Ljava/lang/String; idString
+MP com/example/a b Ljava/lang/String; 0 Ljava/util/List; idString
 ```
 
-This example targets the first parameter (index `0`) of method `b` in class `com/example/a` with (parameter) descriptor
-`Ljava/lang/String;`, renaming it to `idString`.
+This example targets the first parameter (index `0`) of method `b` with descriptor `Ljava/util/List;` in class 
+`com/example/a` with (parameter) descriptor `Ljava/lang/String;`, renaming it to `idString`.
 
 ## Differences from SRG
 This format contains many differences from its parent. Below is a list of all notable changes as well as rationale for
