@@ -100,9 +100,7 @@ The fourth element contains the original (obfuscated) descriptor of the target m
 The fifth element contains the zero-indexed ordinal of the parameter of interest (`0` targets the first  parameter, `1`
 targets the second, etc.).
 
-The sixth element contains the original (obfuscated) descriptor of the parameter's type.
-
-The seventh element contains the new name of the parameter.
+The sixth element contains the new name of the parameter.
 
 Optionally, the parameter descriptor may be omitted to bring the total element count to 6. In this case, the sixth
 (last) element will be treated as the new name of the descriptor. Similarly, implementations are not required to
@@ -111,16 +109,11 @@ necessary for unambiguous idenfication.
 
 #### Example
 ```
-MP com/example/a b Ljava/lang/String; 0 Ljava/util/List; idString
-```
-
-This example targets the first parameter (index `0`) of method `b` with descriptor `Ljava/util/List;` in class 
-`com/example/a` with (parameter) descriptor `Ljava/lang/String;`, renaming it to `idString`. It may also be written as
-the following:
-
-```
 MP com/example/a b Ljava/lang/String; 0 idString
 ```
+
+This example targets the first parameter (index `0`) of method `b` in class  `com/example/a` with (parameter) descriptor
+`Ljava/lang/String;`, renaming it to `idString`. It may also be written as the following:
 
 ## Formatting Requirements
 For the sake of sane parsing, JAM mapping files must define all class mappings at the top of the file, before any other
