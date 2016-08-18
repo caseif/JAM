@@ -10,6 +10,7 @@
   - [Field] [secEntryField]
   - [Method] [secEntryMethod]
   - [Method Parameter] [secEntryMethodParam]
+- [Formatting Requirements] [secFormReqs]
 - [Differences from SRG] [secSrgDiffs]
 
 ## Preface
@@ -121,6 +122,15 @@ the following:
 MP com/example/a b Ljava/lang/String; 0 idString
 ```
 
+## Formatting Requirements
+For the sake of sane parsing, JAM mapping guidelines must follow a couple of basic formatting guidelines:
+
+- Class mappings must reside at the top of the file, before all other mapping types
+- Method parameter mappings must not precede their respective method mappings
+
+Implementations must respect these requirements when writing JAM files in order to remain compliant with the
+specification.
+
 ## Differences from SRG
 This format contains many differences from its parent. Below is a list of all notable changes as well as rationale for
 each.
@@ -159,4 +169,5 @@ each.
 [secEntryField]: #field
 [secEntryMethod]: #method
 [secEntryMethodParam]: #method-parameter
+[secFormReqs]: #formatting-requirements
 [secSrgDiffs]: #differences-from-srg
