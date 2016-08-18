@@ -1,7 +1,6 @@
 # JAM 2.0 Format Specification
 
 ## Table of Contents
-- [Preface] [secPreface]
 - [Introduction] [secIntro]
 - [General Format] [secGenFormat]
 - [External Specifications Referenced] [secExtSpecsRefed]
@@ -12,10 +11,6 @@
   - [Method Parameter] [secEntryMethodParam]
 - [Formatting Requirements] [secFormReqs]
 - [Differences from SRG] [secSrgDiffs]
-
-## Preface
-This specification is still a work in progress and not yet finalized. Therefore, it should be considered subject to
-breaking changes without prior notice.
 
 ## Introduction
 **JAM** (**J**ava **A**ssociated **M**appings) is a format for compact and straightforward storage of deobfuscation
@@ -148,7 +143,6 @@ each.
 [JVMS 4.2.1]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.2.1
 [JVMS 4.3]: https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.3
 
-[secPreface]: #preface
 [secIntro]: #introduction
 [secGenFormat]: #general-format
 [secExtSpecsRefed]: #external-specifications-referenced
