@@ -1,16 +1,16 @@
 # JAM 2.0 Format Specification
 
 ## Table of Contents
-- [Introduction] [secIntro]
-- [General Format] [secGenFormat]
-- [External Specifications Referenced] [secExtSpecsRefed]
-- [Entry Types] [secEntryTypes]
-  - [Class] [secEntryClass]
-  - [Field] [secEntryField]
-  - [Method] [secEntryMethod]
-  - [Method Parameter] [secEntryMethodParam]
-- [Formatting Requirements] [secFormReqs]
-- [Differences from SRG] [secSrgDiffs]
+- [Introduction][secIntro]
+- [General Format][secGenFormat]
+- [External Specifications Referenced][secExtSpecsRefed]
+- [Entry Types][secEntryTypes]
+  - [Class][secEntryClass]
+  - [Field][secEntryField]
+  - [Method][secEntryMethod]
+  - [Method Parameter][secEntryMethodParam]
+- [Formatting Requirements][secFormReqs]
+- [Differences from SRG][secSrgDiffs]
 
 ## Introduction
 **JAM** (**J**ava **A**ssociated **M**appings) is a format for compact and straightforward storage of deobfuscation
@@ -26,9 +26,9 @@ key representing type. Remaining elements will vary in purpose depending on the 
 ## External Specifications Referenced
 The JAM format relies upon multiple external specifications within its own.
 
-Qualified class and interface names must follow the JVMS binary name specification ([JVMS §4.2.1] [JVMS 4.2.1]).
+Qualified class and interface names must follow the JVMS binary name specification ([JVMS §4.2.1][JVMS 4.2.1]).
 
-Descriptors of class members must follow the JVMS descriptor specification ([JVMS §4.3] [JVMS 4.3]).
+Descriptors of class members must follow the JVMS descriptor specification ([JVMS §4.3][JVMS 4.3]).
 
 ## Entry Types
 ### Class
@@ -135,7 +135,7 @@ each.
   - Similar to the previous item, this violates the principle of self-contained mappings and adds nothing of value
   considering it may be calculated with relative ease from already-provided information.
 - Requirement of descriptor for field mappings
-  - The [JVMS] [JVMS] disallows the existence of fields with identical signatures. However, a signature is comprised of
+  - The [JVMS][JVMS] disallows the existence of fields with identical signatures. However, a signature is comprised of
   a name and a descriptor. Therefore, it is legal for fields with identical names but different descriptors to be
   present within a single class. This makes field references including only a name ambiguous and unsatisfactory.
 
