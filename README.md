@@ -1,6 +1,7 @@
-# JAM 2.0 Format Specification
+# JAM 2.1 Format Specification
 
 ## Table of Contents
+
 - [Introduction][secIntro]
 - [General Format][secGenFormat]
 - [External Specifications Referenced][secExtSpecsRefed]
@@ -13,17 +14,20 @@
 - [Differences from SRG][secSrgDiffs]
 
 ## Introduction
+
 **JAM** (**J**ava **A**ssociated **M**appings) is a format for compact and straightforward storage of deobfuscation
 mappings for Java programs. It is inspired by the popular SRG format, building upon it to resolve multiple shortcomings.
 
 It should be noted that it is not designed to be backward-compatible with the original SRG specification.
 
 ## General Format
+
 JAM follows a basic general format. Each line contains a single entry, and each entry occupies a single line. Each
 entry is separated into multiple elements, delimited by a single space character. The first element is a two letter
 key representing type. Remaining elements will vary in purpose depending on the entry type.
 
 ## External Specifications Referenced
+
 The JAM format relies upon multiple external specifications within its own.
 
 Qualified class and interface names must follow the JVMS binary name specification ([JVMS §4.2.1][JVMS 4.2.1]).
@@ -32,6 +36,7 @@ Descriptors of class members must follow the JVMS descriptor specification ([JVM
 
 ## Entry Types
 ### Class
+
 A class entry defines a mapping for a given class name and is denoted by the key `CL`.
 
 The second element (immediately after the key) contains the qualified original (obfuscated) name of the class.
@@ -39,6 +44,7 @@ The second element (immediately after the key) contains the qualified original (
 The third element contains the qualified deobfuscated name of the class.
 
 #### Example
+
 ```
 CL com/example/a com/example/SomeClass
 ```
@@ -46,6 +52,7 @@ CL com/example/a com/example/SomeClass
 This example targets the class originally named `com/example/a`, renaming it to `com/example/SomeClass`.
 
 ### Field
+
 A field entry defines a mapping for a given field identified by a name and descriptor, and is denoted by the key `FD`.
 
 The second element contains the qualified original (obfuscated) name of the class containing the field.
@@ -57,6 +64,7 @@ The fourth element contains the original (obfuscated) descriptor of the field.
 The fifth element contains the unqualified deobfuscated name of the field.
 
 #### Example
+
 ```
 FD com/example/a b Ljava/lang/String; idString
 ```
@@ -64,6 +72,7 @@ FD com/example/a b Ljava/lang/String; idString
 This example targets field `b` with descriptor `Ljava/lang/String;` in class `com/example/a`, renaming it to `idString`.
 
 ### Method
+
 A method entry defines a mapping for a given method identified by a name and descriptor, and is denoted by the key `MD`.
 
 The second element contains the qualified original (obfuscated) name of the class containing the method.
@@ -75,6 +84,7 @@ The fourth element contains the original (obfuscated) descriptor of the method.
 The fifth element contains the unqualified deobfuscated name of the method.
 
 #### Example
+
 ```
 MD com/example/a b ()Ljava/lang/String; getName
 ```
@@ -83,6 +93,7 @@ This example targets method `b` with descriptor `()Ljava/lang/String;` in class 
 `getName`.
 
 ### Method Parameter
+
 A method parameter entry defines a mapping for a given parameter of a specific method, and is denoted by the key `MP`.
 
 The second element contains the qualified original (obfuscated) name of the class containing the target method.
@@ -95,7 +106,9 @@ The fourth element contains the original (obfuscated) descriptor of the target m
 The fifth element contains the zero-indexed ordinal of the parameter of interest (`0` targets the first  parameter, `1`
 targets the second, etc.).
 
-The sixth element contains the new name of the parameter.
+The sixth element contains the original (obfuscated) descriptor of the target parameter.
+
+The seventh element contains the new name of the parameter.
 
 Optionally, the parameter descriptor may be omitted to bring the total element count to 6. In this case, the sixth
 (last) element will be treated as the new name of the descriptor. Similarly, implementations are not required to
@@ -103,18 +116,25 @@ validate parameter types against a provided descriptor, as this is simply a sani
 necessary for unambiguous idenfication.
 
 #### Example
+
 ```
-MP com/example/a b Ljava/lang/String; 0 idString
+MP com/example/a b (Ljava/lang/String;I)V 0 Ljava/lang/String; idString
 ```
 
-This example targets the first parameter (index `0`) of method `b` in class  `com/example/a` with (parameter) descriptor
-`Ljava/lang/String;`, renaming it to `idString`. It may also be written as the following:
+This example targets the first parameter (index `0`) of method `b(Ljava/lang/String;I)V` in class  `com/example/a` with
+(parameter) descriptor `Ljava/lang/String;`, renaming it to `idString`. It may also be written as the following:
+
+```
+MP com/example/a b (Ljava/lang/String;I)V 0 idString
+```
 
 ## Formatting Requirements
+
 For the sake of sane parsing, JAM mapping files must define all class mappings at the top of the file, before any other
 mapping types. This must be respected by implementations outputting JAM files in order to adhere to the specification.
 
 ## Differences from SRG
+
 This format contains many differences from its parent. Below is a list of all notable changes as well as rationale for
 each.
 
